@@ -3,10 +3,15 @@ import numpy as np
 
 router = APIRouter()
 
-@router.get('')
-def hello_world() -> dict:
-    matr1 = np.random.rand(10,10)
-    matr2 = np.random.rand(10,10)
-    res  = np.dot(matr1.matr2)
+@router.get("/multiply_matrices")
+def multiply_matrices():
+    matrix_a = np.random.rand(10, 10).tolist()
+    matrix_b = np.random.rand(10, 10).tolist()
+    product = np.matmul(matrix_a, matrix_b).tolist()
+    return {
+        "matrix_a": matrix_a,
+        "matrix_b": matrix_b,
+        "product": product
+    }
 
-    return {'msg': 'Hello, World!', "\nmatr1": matr1.tolist(), "\nmatr2": matr2.tolist(), "res": res.tolist()}
+print('hello')
